@@ -9,6 +9,7 @@ npx create-react-app <project-name>
 npm i node-sass@~4.12 typescript
 ```
 ##### Sweet Alert
+[https://sweetalert2.github.io/]
 ```bash
 npm i sweetalert2
 ```
