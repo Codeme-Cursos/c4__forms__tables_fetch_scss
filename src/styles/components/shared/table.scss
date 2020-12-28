@@ -2,7 +2,6 @@
     width: 100%;
     border: none;
     border-collapse: collapse;
-    
     thead{
         th{
             padding: 5px 0;
@@ -10,6 +9,7 @@
             text-align: center;
             color: $ligth;
             background-color: $primary;
+            height: 43px;
         }
         th:last-child{
             border-right: 1px solid $primary;

@@ -1,14 +1,34 @@
-import SVGDelete from "../../shared/icons/SVGDelete"
-import SVGEdit from "../../shared/icons/SVGEdit"
-import Table from "../../shared/tables/Table"
+import SVGDelete from "../../shared/icons/SVGDelete";
+import SVGEdit from "../../shared/icons/SVGEdit";
+import Table from "../../shared/tables/Table";
+import Swal from "sweetalert2";
 
 const HomeTable = ({ tasks, setTaskId, taskId, setTasks }) => {
 
     const headers = ["id,1", "Responsable,3", "Descripción,4", "Opciones,2"]
 
     const deleteTask = id => {
-        const result = tasks.filter(task => task.id !== id)
-        setTasks(result)
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "El siguiente registro será eliminado",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const result = tasks.filter(task => task.id !== id)
+                setTasks(result)
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Felicitaciones',
+                    text: 'Tarea eliminada con éxito!'
+                })
+            }
+        })
+
+
     }
 
     return (
