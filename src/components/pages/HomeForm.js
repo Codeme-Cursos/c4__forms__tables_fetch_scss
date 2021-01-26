@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
-import Form from "../../shared/forms/Form";
-import FormInput from "../../shared/forms/FormInput";
-import Button from "../../shared/buttons/Button";
+import Form from "../shared/forms/Form";
+import FormInput from "../shared/forms/FormInput";
+import Button from "../shared/buttons/Button";
 import Swal from "sweetalert2";
 
 const HomeForm = ({ tasks, setTasks, taskId, setTaskId }) => {
     /* estado que represtan la actual tarea que se crea o se edita */
-    const [currentTask, setCurrentTask] = useState({
+    const [form, setForm] = useState({
         responsable: "",
         description: ""
     })
-    /* Efecto que carga la currentTask con la información correspondiente a la tarea a editar, si se va a crear una tarea (task) este efecto no hace nada. */
+    /* Efecto que carga form con la información correspondiente a la tarea a editar, si se va a crear una tarea (task) este efecto no hace nada. */
     useEffect(() => {
         const selected = tasks.filter(task => task.id === taskId)
-        taskId && setCurrentTask(selected[0])
+        taskId && setForm(selected[0])
     }, [taskId, tasks])
 
     /* Función para validar elementos del formulario */
@@ -40,7 +40,7 @@ const HomeForm = ({ tasks, setTasks, taskId, setTaskId }) => {
         /* Forma de generar id, pero puede generar duplicidad */
         /* const id = tasks.length + 1; */
         const id = tasks.length > 0 ? (tasks[tasks.length - 1].id) + 1 : 1;
-        const newTask = { ...currentTask, id }
+        const newTask = { ...form, id }
         setTasks([...tasks, newTask])
         Swal.fire({
             icon: 'success',
@@ -61,17 +61,17 @@ const HomeForm = ({ tasks, setTasks, taskId, setTaskId }) => {
         }) */
 
         const index = tasks.findIndex(task => task.id === taskId)
-        tasks[index].responsable = currentTask.responsable;
-        tasks[index].description = currentTask.description;
+        tasks[index].responsable = form.responsable;
+        tasks[index].description = form.description;
         Swal.fire({
             icon: 'success',
             title: 'Felicitaciones',
             text: 'Tarea modificada con éxito!'
         }).then(() => resetForm())
     }
-    /* Función que resetea el currentTask */
+    /* Función que resetea el form */
     const resetForm = () => {
-        setCurrentTask({
+        setForm({
             responsable: "",
             description: ""
         })
@@ -80,17 +80,17 @@ const HomeForm = ({ tasks, setTasks, taskId, setTaskId }) => {
     /* Función para manejar el evento change que genera cada input del formulario */
     const handleChange = e => {
         const { name, value } = e.target;
-        setCurrentTask({
-            ...currentTask,
+        setForm({
+            ...form,
             [name]: value
         })
     }
     /* Función para manejar el evento submit que genera el formulario */
     const handleSubmit = () => {
         if (!taskId) {
-            formValidation(currentTask, addTask)
+            formValidation(form, addTask)
         } else {
-            formValidation(currentTask, editTask)
+            formValidation(form, editTask)
         }
     }
 
@@ -99,7 +99,7 @@ const HomeForm = ({ tasks, setTasks, taskId, setTaskId }) => {
             <FormInput
                 label="Responsable"
                 id="responsableInput"
-                value={currentTask.responsable}
+                value={form.responsable}
                 handleChange={handleChange}
                 name="responsable"
             />
@@ -107,7 +107,7 @@ const HomeForm = ({ tasks, setTasks, taskId, setTaskId }) => {
                 type="textArea"
                 label="Descripción"
                 id="descriptionInput"
-                value={currentTask.description}
+                value={form.description}
                 handleChange={handleChange}
                 name="description"
             />

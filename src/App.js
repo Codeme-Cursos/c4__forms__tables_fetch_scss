@@ -1,12 +1,12 @@
 import Footer from "./components/shared/Footer";
 import Navbar from "./components/shared/Navbar";
-import Home from "./pages/home/Home";
+import Tasks from "./pages/Tasks";
 
 const App = () => {
     return (
         <>
             <Navbar />
-            <Home />
+            <Tasks />
             <Footer />
         </>
     )

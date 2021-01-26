@@ -1,14 +1,16 @@
 import { useState } from 'react';
-import HomeForm from '../../components/pages/home/HomeForm';
-import HomeTable from '../../components/pages/home/HomeTable';
+import HomeForm from '../components/pages/HomeForm';
+import HomeTable from '../components/pages/HomeTable';
 
 const Home = () => {
 
+    /* estado que representa las tareas existentes */
     const [tasks, setTasks] = useState([
-        { id: 1, responsable: "Limpiar", description: "zona 1" },
-        { id: 2, responsable: "Cocinar", description: "zona 2" }
+        { id: 1, responsable: "Andrés", description: "Limpiar" },
+        { id: 2, responsable: "Javiera", description: "Cocinar" }
     ])
 
+     /* estado que representa el id de la tarea seleccionada para editar */
     const [taskId, setTaskId] = useState(null)
 
     return (

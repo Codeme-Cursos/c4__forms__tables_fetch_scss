@@ -1,12 +1,14 @@
-import SVGDelete from "../../shared/icons/SVGDelete";
-import SVGEdit from "../../shared/icons/SVGEdit";
-import Table from "../../shared/tables/Table";
+import SVGDelete from "../shared/icons/SVGDelete";
+import SVGEdit from "../shared/icons/SVGEdit";
+import Table from "../shared/tables/Table";
 import Swal from "sweetalert2";
 
 const HomeTable = ({ tasks, setTaskId, taskId, setTasks }) => {
 
+     /* Representa las cabezeras de las tablas */
     const headers = ["id,1", "Responsable,3", "Descripción,4", "Opciones,2"]
 
+    /* Función para eliminar una tarea existente, utilizando el id de la tarea a eliminar */
     const deleteTask = id => {
         Swal.fire({
             title: '¿Estás seguro?',
