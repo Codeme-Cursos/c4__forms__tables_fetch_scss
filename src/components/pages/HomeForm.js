@@ -51,7 +51,7 @@ const HomeForm = ({ tasks, setTasks, taskId, setTaskId }) => {
     }
     /* Función para editar una tarea existente (task) al listado de tareas (tasks), mediante la búsqueda del índice. */
     const editTask = async () => {
-        /* forma menos eficiente de obtener el index */
+        /* forma menos eficiente de obtener el index y mutando array */
         /* let index = null;
         tasks.map((task, i) => {
             if (task.id === taskId) {
@@ -59,10 +59,20 @@ const HomeForm = ({ tasks, setTasks, taskId, setTaskId }) => {
             }
             return null;
         }) */
-
-        const index = tasks.findIndex(task => task.id === taskId)
-        tasks[index].responsable = form.responsable;
-        tasks[index].description = form.description;
+        /* forma mas eficiente de obtener el index y mutando array */
+        /* 
+            const index = tasks.findIndex(task => task.id === taskId)
+            tasks[index].responsable = form.responsable;
+            tasks[index].description = form.description; 
+        */
+        /* forma mas eficiente de obtener el index y sin mutar array */
+        const deletedEditTasks = tasks.filter(task => task.id !== taskId)
+        const editedTask = {
+            id: taskId,
+            responsable: form.responsable,
+            description: form.description
+        }
+        setTasks([...deletedEditTasks, editedTask])
         Swal.fire({
             icon: 'success',
             title: 'Felicitaciones',
