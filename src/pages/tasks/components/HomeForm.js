@@ -9,7 +9,7 @@ const HomeForm = (props) => {
 
   const { tasks, taskId, setTaskId, getTasks } = props;
 
-  /* estado que represtan la actual tarea que se crea o se edita */
+  /* estado que representa la actual tarea que se está creando o editando */
   const [form, setForm] = useState({
     responsable: "",
     description: "",
@@ -104,7 +104,7 @@ const HomeForm = (props) => {
     }
   };
 
-  /* Función que resetea el form */
+  /* Función que resetea el estado form */
   const resetForm = () => {
     setForm({
       responsable: "",
