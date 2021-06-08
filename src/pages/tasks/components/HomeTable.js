@@ -4,7 +4,10 @@ import Table from "../../../components/tables/Table";
 import Swal from "sweetalert2";
 const { REACT_APP_API } = process.env;
 
-const HomeTable = ({ tasks, setTaskId, taskId, getTasks }) => {
+const HomeTable = (props) => {
+
+  const { tasks, setTaskId, taskId, getTasks } = props;
+
   /* Representa las cabezeras de las tablas, contiene el titulo de la columna
      y el valor a dividir por 10 para obtener el % de ancho de la misma */
   const headers = ["id,1", "Responsable,3", "Descripción,4", "Opciones,2"];

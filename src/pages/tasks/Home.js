@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
-import Loader from "../../components/Loader";
-import HomeForm from "./components/HomeForm";
-import HomeTable from "./components/HomeTable";
+import { useState, useEffect } from 'react';
+import Loader from '../../components/Loader';
+import HomeForm from './components/HomeForm';
+import HomeTable from './components/HomeTable';
 const { REACT_APP_API } = process.env;
 
 const Home = () => {
@@ -34,22 +34,26 @@ const Home = () => {
     <main className="main">
       <div className="main__form">
         <HomeForm
-          {...{ tasks, setTasks, taskId, setTaskId }}
+          tasks={tasks}
+          setTasks={setTasks}
+          taskId={taskId}
+          setTaskId={setTaskId}
           getTasks={getTasks}
         />
       </div>
 
       <div className="main__table">
-        {
-            isLoading ? (
-                <Loader />
-            ) : (
-                <HomeTable
-                {...{ tasks, setTasks, taskId, setTaskId }}
-                getTasks={getTasks}
-              />
-            )
-        }
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <HomeTable
+            tasks={tasks}
+            setTasks={setTasks}
+            taskId={taskId}
+            setTaskId={setTaskId}
+            getTasks={getTasks}
+          />
+        )}
       </div>
     </main>
   );

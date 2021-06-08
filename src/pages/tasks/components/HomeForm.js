@@ -5,7 +5,10 @@ import Button from "../../../components/buttons/Button";
 import Swal from "sweetalert2";
 const { REACT_APP_API } = process.env;
 
-const HomeForm = ({ tasks, setTasks, taskId, setTaskId, getTasks }) => {
+const HomeForm = (props) => {
+
+  const { tasks, taskId, setTaskId, getTasks } = props;
+
   /* estado que represtan la actual tarea que se crea o se edita */
   const [form, setForm] = useState({
     responsable: "",
@@ -36,7 +39,7 @@ const HomeForm = ({ tasks, setTasks, taskId, setTaskId, getTasks }) => {
       success();
     }
   };
-  
+
   /* Función para agregar un nueva tarea (task) al listado de tareas (tasks) */
   const addTask = async () => {
     try {
