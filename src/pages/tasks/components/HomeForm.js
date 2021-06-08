@@ -36,6 +36,7 @@ const HomeForm = ({ tasks, setTasks, taskId, setTaskId, getTasks }) => {
       success();
     }
   };
+  
   /* Función para agregar un nueva tarea (task) al listado de tareas (tasks) */
   const addTask = async () => {
     try {
@@ -67,12 +68,13 @@ const HomeForm = ({ tasks, setTasks, taskId, setTaskId, getTasks }) => {
       });
     }
   };
+
   /* Función para editar una tarea existente (task) al listado de tareas (tasks), mediante la búsqueda del índice. */
   const editTask = async () => {
     try {
       const { responsable, description } = form;
       const res = await fetch(`${REACT_APP_API}/task/${taskId}`, {
-        method: "PUT",
+        method: "PATCH",
         body: JSON.stringify({
           responsable,
           description,
