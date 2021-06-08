@@ -11,7 +11,7 @@ const Home = () => {
   /* estado que representa el id de la tarea seleccionada para editar */
   const [taskId, setTaskId] = useState(null);
 
-  /* estado que representa las tareas existentes */
+  /* estado que representa el visualización del componente Loader */
   const [isLoading, setIsLoading] = useState(false);
 
   const getTasks = async () => {
