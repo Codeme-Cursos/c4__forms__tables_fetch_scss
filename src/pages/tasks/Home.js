@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
-import Loader from '../../components/Loader';
+import Loader from '../../components/loader/Loader';
 import HomeForm from './components/HomeForm';
 import HomeTable from './components/HomeTable';
+import './style.scss';
+
 const { REACT_APP_API } = process.env;
 
 const Home = () => {

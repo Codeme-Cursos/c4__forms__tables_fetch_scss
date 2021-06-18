@@ -1,5 +1,6 @@
 import React from 'react';
-import SVGLoading from './icons/SVGLoading';
+import SVGLoading from '../icons/SVGLoading';
+import './style.scss';
 
 const Loader = () => {
     return (
